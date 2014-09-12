@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+xmlns:android="http://schemas.android.com/apk/res/android"
+id="co.wolfstack.share"
+    version="0.1.1">
+    <name>Share</name>
+    <description>Share any png / jpeg image</description>
+    <keywords>share,facebook,twitter,image,png,jpg,jpeg,wolfstack,base64</keywords>
+    
+    <js-module src="www/share.js" name="Share">
+        <clobbers target="window.navigator.share" />
+    </js-module>
+
+    <license>MIT</license>
+    
+    <!-- android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="Share" >
+                <param name="android-package" value="co.wolfstack.share.Share"/>
+            </feature>
+        </config-file>
+        <source-file src="src/android/Share.java" target-dir="src/co/wolfstack/share" />
+     </platform>
+
+     <!-- ios -->
+     <platform name="ios">    
+         <config-file target="config.xml" parent="/*">
+             <feature name="Share">
+                 <param name="ios-package" value="MMShare" /> 
+             </feature>
+         </config-file>
+         <header-file src="src/ios/MMShare.h" />
+         <source-file src="src/ios/MMShare.m" />
+     </platform>
+</plugin>
